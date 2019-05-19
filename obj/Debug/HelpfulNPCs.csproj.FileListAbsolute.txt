@@ -1,0 +1,10 @@
+C:\Users\Casey\Documents\My Games\Terraria\ModLoader\Mod Sources\HelpfulNPCs\bin\Debug\HelpfulNPCs.dll
+C:\Users\Casey\Documents\My Games\Terraria\ModLoader\Mod Sources\HelpfulNPCs\bin\Debug\HelpfulNPCs.pdb
+C:\Users\Casey\Documents\My Games\Terraria\ModLoader\Mod Sources\HelpfulNPCs\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\Casey\Documents\My Games\Terraria\ModLoader\Mod Sources\HelpfulNPCs\bin\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\Casey\Documents\My Games\Terraria\ModLoader\Mod Sources\HelpfulNPCs\bin\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\Casey\Documents\My Games\Terraria\ModLoader\Mod Sources\HelpfulNPCs\bin\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\Casey\Documents\My Games\Terraria\ModLoader\Mod Sources\HelpfulNPCs\bin\Debug\Terraria.exe
+C:\Users\Casey\Documents\My Games\Terraria\ModLoader\Mod Sources\HelpfulNPCs\obj\Debug\HelpfulNPCs.csprojResolveAssemblyReference.cache
+C:\Users\Casey\Documents\My Games\Terraria\ModLoader\Mod Sources\HelpfulNPCs\obj\Debug\HelpfulNPCs.dll
+C:\Users\Casey\Documents\My Games\Terraria\ModLoader\Mod Sources\HelpfulNPCs\obj\Debug\HelpfulNPCs.pdb
