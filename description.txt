@@ -2,6 +2,6 @@ Helpful NPCs is a mod that adds four new NPCs that sell items that are usually b
 
 NPCs:
 - Miner (Sells bars and gems. Spawns after defeating the EoC.)
-- Hunter (Sells monster drops/soul/essence related items. Spawns after defeating EoC.)
-- isherman (Sells bait, normal fish, and quest fish. Spawns if there is an angler.)
+- Hunter (Sells monster drops/soul/essence related items and ammo. Spawns after defeating EoC.)
+- Fisherman (Sells bait, normal fish, and quest fish. Spawns if there is an angler.)
 - Environmentalist (Sells herbs, seeds, and critters. Spawns after defeating the Queen Bee)

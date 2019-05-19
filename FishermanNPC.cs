@@ -189,16 +189,7 @@ namespace HelpfulNPCs
                 shop.item[nextSlot].SetDefaults(ItemID.VariegatedLardfish);
                 nextSlot++;
 
-                shop.item[nextSlot].SetDefaults(ItemID.Coral);
-                nextSlot++;
 
-                shop.item[nextSlot].SetDefaults(ItemID.Seashell);
-                shop.item[nextSlot].shopCustomPrice = 100;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Starfish);
-                shop.item[nextSlot].shopCustomPrice = 100;
-                nextSlot++;
 
                 if (Main.hardMode)
                 {

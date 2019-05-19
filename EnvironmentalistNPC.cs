@@ -127,6 +127,17 @@ namespace HelpfulNPCs
                 shop.item[nextSlot].SetDefaults(ItemID.NaturesGift);
                 nextSlot++;
 
+                shop.item[nextSlot].SetDefaults(ItemID.Coral);
+                nextSlot++;
+
+                shop.item[nextSlot].SetDefaults(ItemID.Seashell);
+                shop.item[nextSlot].shopCustomPrice = 100;
+                nextSlot++;
+
+                shop.item[nextSlot].SetDefaults(ItemID.Starfish);
+                shop.item[nextSlot].shopCustomPrice = 100;
+                nextSlot++;
+
                 shop.item[nextSlot].SetDefaults(ItemID.Mushroom);
                 nextSlot++;
 
@@ -204,9 +215,11 @@ namespace HelpfulNPCs
 
                 shop.item[nextSlot].SetDefaults(ItemID.JungleGrassSeeds);
                 nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.HallowedSeeds);
-                nextSlot++;
+                if (Main.hardMode)
+                {
+                    shop.item[nextSlot].SetDefaults(ItemID.HallowedSeeds);
+                    nextSlot++;
+                }
             }
             else
             {

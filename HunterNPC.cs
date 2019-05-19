@@ -11,7 +11,7 @@ namespace HelpfulNPCs
     [AutoloadHead]
     public class HunterNPC : ModNPC
     {
-        public static bool Drops = false;
+        public static int shopChoice = 0;
         public override bool Autoload(ref string name)
         {
             name = "Hunter";
@@ -87,26 +87,58 @@ namespace HelpfulNPCs
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = "Monster Drops";
-            button2 = "Ammo";
+
+            if (shopChoice == 3)
+            {
+                shopChoice = 0;
+            }
+
+            if (shopChoice == 0)
+            {
+                button = "Monster Drops";
+            }
+            if (shopChoice == 1)
+            {
+                button = "Souls/Essences";
+            }
+            if (shopChoice == 2)
+            {
+                button = "Ammunition";
+            }
+            
+            button2 = "Change Shop";
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
-            Drops = firstButton;
-            shop = true;
+            
 
+            if (firstButton)
+            {
+                shop = true;
+            } 
+            else
+            {
+                shopChoice++;
+            }
 
         }
+        
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            if (Drops)
+            if (shopChoice == 0)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.Gel);
                 nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.PinkGel);
+                nextSlot++;
+
+                shop.item[nextSlot].SetDefaults(ItemID.Lens);
+                nextSlot++;
+
+                shop.item[nextSlot].SetDefaults(ItemID.BlackLens);
                 nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.AntlionMandible);
@@ -129,6 +161,9 @@ namespace HelpfulNPCs
 
                 if (NPC.downedBoss2)
                 {
+                    shop.item[nextSlot].SetDefaults(ItemID.TatteredCloth);
+                    nextSlot++;
+
                     shop.item[nextSlot].SetDefaults(ItemID.ShadowScale);
                     nextSlot++;
 
@@ -139,12 +174,14 @@ namespace HelpfulNPCs
                 if (NPC.downedBoss3)
                 {
                     shop.item[nextSlot].SetDefaults(ItemID.Bone);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(silver: 2);
                     nextSlot++;    
                 }
 
                 if (NPC.downedQueenBee || NPC.downedBoss3)
                 {
                     shop.item[nextSlot].SetDefaults(ItemID.Feather);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(silver: 2);
                     nextSlot++;
 
                     shop.item[nextSlot].SetDefaults(ItemID.Stinger);
@@ -170,24 +207,30 @@ namespace HelpfulNPCs
                     shop.item[nextSlot].SetDefaults(ItemID.LightShard);
                     nextSlot++;
 
+                    shop.item[nextSlot].SetDefaults(ItemID.AncientCloth);
+                    nextSlot++;
+
                     shop.item[nextSlot].SetDefaults(ItemID.PixieDust);
                     nextSlot++;
 
                     shop.item[nextSlot].SetDefaults(ItemID.UnicornHorn);
                     nextSlot++;
 
+                    shop.item[nextSlot].SetDefaults(ItemID.SpiderFang);
+                    nextSlot++;
+
                     shop.item[nextSlot].SetDefaults(ItemID.LivingFireBlock);
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(copper: 5);
                     nextSlot++;
 
-                    shop.item[nextSlot].SetDefaults(ItemID.SoulofLight);
+
+
+                    shop.item[nextSlot].SetDefaults(ItemID.FrostCore);
                     nextSlot++;
 
-                    shop.item[nextSlot].SetDefaults(ItemID.SoulofNight);
+                    shop.item[nextSlot].SetDefaults(3783); // Forbidden Fragment
                     nextSlot++;
 
-                    shop.item[nextSlot].SetDefaults(ItemID.SoulofFlight);
-                    nextSlot++;
 
 
                 }
@@ -202,27 +245,13 @@ namespace HelpfulNPCs
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 3);
                     nextSlot++;
 
-                    shop.item[nextSlot].SetDefaults(ItemID.SoulofSight);
-                    nextSlot++;
 
-                    shop.item[nextSlot].SetDefaults(ItemID.SoulofMight);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.SoulofFright);
-                    nextSlot++;
 
                     shop.item[nextSlot].SetDefaults(ItemID.TurtleShell);
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 5);
                     nextSlot++;
                 }
 
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.Ectoplasm);
-                    nextSlot++;
-
-
-                }
 
                 if (NPC.downedGolemBoss)
                 {
@@ -233,25 +262,63 @@ namespace HelpfulNPCs
                     nextSlot++;
                 }
 
+
+            }
+            if (shopChoice == 1)
+            {
+                if (Main.hardMode)
+                {
+                    shop.item[nextSlot].SetDefaults(ItemID.SoulofLight);
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.SoulofNight);
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.SoulofFlight);
+                    nextSlot++;
+                }
+
+                if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+                {
+
+                    shop.item[nextSlot].SetDefaults(ItemID.SoulofSight);
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.SoulofMight);
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.SoulofFright);
+                    nextSlot++;
+                }
+                if (NPC.downedPlantBoss)
+                {
+                    shop.item[nextSlot].SetDefaults(ItemID.Ectoplasm);
+                    nextSlot++;
+
+
+                }
+
                 if (NPC.downedMoonlord)
                 {
                     shop.item[nextSlot].SetDefaults(ItemID.FragmentSolar);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 5);
                     nextSlot++;
 
                     shop.item[nextSlot].SetDefaults(ItemID.FragmentVortex);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 5);
                     nextSlot++;
 
                     shop.item[nextSlot].SetDefaults(ItemID.FragmentNebula);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 5);
                     nextSlot++;
 
                     shop.item[nextSlot].SetDefaults(ItemID.FragmentStardust);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 5);
                     nextSlot++;
                 }
             }
-
-            
-
-            else {
+            if (shopChoice == 2)
+            {
                 shop.item[nextSlot].SetDefaults(ItemID.MusketBall);
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.SilverBullet);
@@ -294,6 +361,7 @@ namespace HelpfulNPCs
                 if (NPC.downedMoonlord)
                 {
                     shop.item[nextSlot].SetDefaults(ItemID.MoonlordBullet);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(silver: 1);
                     nextSlot++;
                 }
 
@@ -336,9 +404,9 @@ namespace HelpfulNPCs
                 if (NPC.downedMoonlord)
                 {
                     shop.item[nextSlot].SetDefaults(ItemID.MoonlordArrow);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(silver: 3);
                     nextSlot++;
                 }
-
             }
             
         }
