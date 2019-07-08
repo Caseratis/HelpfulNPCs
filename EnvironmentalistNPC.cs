@@ -58,7 +58,7 @@ namespace HelpfulNPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (NPC.downedQueenBee && Config.EnvironmentalistCanSpawn)
+            if (NPC.downedQueenBee && HelpfulNPCs.config.EnvironmentalistCanSpawn)
             {
                 return true;
             }

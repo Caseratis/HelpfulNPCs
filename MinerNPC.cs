@@ -57,7 +57,7 @@ namespace HelpfulNPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (NPC.downedBoss1 && Config.MinerCanSpawn)
+            if (NPC.downedBoss1 && HelpfulNPCs.config.MinerCanSpawn)
             {
                 return true;
             }

@@ -58,7 +58,7 @@ namespace HelpfulNPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (NPC.npcsFoundForCheckActive[NPCID.Angler] && Config.FishermanCanSpawn)
+            if (NPC.npcsFoundForCheckActive[NPCID.Angler] && HelpfulNPCs.config.FishermanCanSpawn)
             {
                 return true;
             }

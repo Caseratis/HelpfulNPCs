@@ -4,6 +4,7 @@ namespace HelpfulNPCs
 {
     class HelpfulNPCs : Mod
     {
+        internal static Config config;
         public HelpfulNPCs()
         {
             Properties = new ModProperties()
@@ -15,9 +16,9 @@ namespace HelpfulNPCs
         }
 
 
-            public override void Load()
+        public override void Unload()
         {
-            Config.Load();
+            config = null;
         }
 
         public override void PostSetupContent()
