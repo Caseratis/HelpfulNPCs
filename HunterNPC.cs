@@ -11,7 +11,7 @@ namespace HelpfulNPCs
     [AutoloadHead]
     public class HunterNPC : ModNPC
     {
-        public static int shopChoice = 0;
+        private static int shopChoice = 0;
         public override bool Autoload(ref string name)
         {
             name = "Hunter";
@@ -36,7 +36,7 @@ namespace HelpfulNPCs
             NPCID.Sets.AttackType[npc.type] = 1;
             NPCID.Sets.AttackTime[npc.type] = 17;
             NPCID.Sets.AttackAverageChance[npc.type] = 10;
-            NPCID.Sets.HatOffsetY[npc.type] = 4;
+            NPCID.Sets.HatOffsetY[npc.type] = -3;
         }
 
         public override void SetDefaults()
@@ -88,22 +88,21 @@ namespace HelpfulNPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
 
-            if (shopChoice == 3)
-            {
-                shopChoice = 0;
-            }
-
             if (shopChoice == 0)
             {
                 button = "Monster Drops";
             }
-            if (shopChoice == 1)
+            else if (shopChoice == 1)
             {
                 button = "Souls/Essences";
             }
-            if (shopChoice == 2)
+            else if (shopChoice == 2)
             {
                 button = "Ammunition";
+            } 
+            else
+            {
+                shopChoice = 0;
             }
             
             button2 = "Change Shop";

@@ -31,13 +31,14 @@ namespace HelpfulNPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Environmentalist");
-            Main.npcFrameCount[npc.type] = 25;
-            NPCID.Sets.AttackFrameCount[npc.type] = 4;
-            NPCID.Sets.DangerDetectRange[npc.type] = 150;
-            NPCID.Sets.AttackType[npc.type] = 3;
-            NPCID.Sets.AttackTime[npc.type] = 17;
+            Main.npcFrameCount[npc.type] = 23;
+            NPCID.Sets.AttackFrameCount[npc.type] = 2;
+            NPCID.Sets.DangerDetectRange[npc.type] = 300;
+            NPCID.Sets.AttackType[npc.type] = 2;
+            NPCID.Sets.AttackTime[npc.type] = 30;
             NPCID.Sets.AttackAverageChance[npc.type] = 10;
-            NPCID.Sets.HatOffsetY[npc.type] = 4;
+            NPCID.Sets.HatOffsetY[npc.type] = 2;
+            NPCID.Sets.MagicAuraColor[npc.type] = Color.ForestGreen;
         }
 
         public override void SetDefaults()
@@ -89,7 +90,7 @@ namespace HelpfulNPCs
                 case 1:
                     return "There's no such thing as magic beanstalks.";
                 case 2:
-                    return "I can pull a bunny out of my hat!";
+                    return "No, these critters are perfectly happy.";
                 default:
                     return "Growing plants takes hardwork and dedication.";
             }
@@ -339,17 +340,17 @@ namespace HelpfulNPCs
             randExtraCooldown = 20;
         }
 
-        public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
+        public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            scale = 1f;
-            item = Main.itemTexture[ItemID.StaffofRegrowth]; ; //this defines the item that this npc will use
-            itemSize = 50;
+            projType = ProjectileID.Leaf;
+            attackDelay = 20;
         }
 
-        public override void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight) //  Allows you to determine the width and height of the item this town NPC swings when it attacks, which controls the range of this NPC's swung weapon.
+        public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {
-            itemWidth = 50;
-            itemHeight = 50;
+            multiplier = 5;
+            gravityCorrection = 0;
+            randomOffset = .2f;
         }
     }
 }

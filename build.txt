@@ -1,5 +1,5 @@
 author = Caseratis
-version = 0.1.6
+version = 0.2.1
 displayName = Helpful NPCs
 hideCode = false
 hideResources = false

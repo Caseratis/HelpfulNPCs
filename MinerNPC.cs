@@ -34,9 +34,9 @@ namespace HelpfulNPCs
             NPCID.Sets.AttackFrameCount[npc.type] = 5;
             NPCID.Sets.DangerDetectRange[npc.type] = 150;
             NPCID.Sets.AttackType[npc.type] = 3;
-            NPCID.Sets.AttackTime[npc.type] = 19;
+            NPCID.Sets.AttackTime[npc.type] = 25;
             NPCID.Sets.AttackAverageChance[npc.type] = 10;
-            NPCID.Sets.HatOffsetY[npc.type] = 4;
+            NPCID.Sets.HatOffsetY[npc.type] = -1;
         }
 
         public override void SetDefaults()
@@ -267,9 +267,19 @@ namespace HelpfulNPCs
 
         public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
         {
-            scale = 1f;
-            item = Main.itemTexture[ItemID.IronPickaxe]; //this defines the item that this npc will use
+            scale = 2f;
+            item = Main.itemTexture[ItemID.Minecart]; //this defines the item that this npc will use
             itemSize = 32;
+
+            if (npc.spriteDirection == 1)
+            {
+                offset.X = -13;
+            } 
+
+            if (npc.spriteDirection == -1)
+            {
+                offset.X = 13;
+            }
         }
 
         public override void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight) //  Allows you to determine the width and height of the item this town NPC swings when it attacks, which controls the range of this NPC's swung weapon.
